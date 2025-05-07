@@ -89,10 +89,22 @@
             position: relative;
         }
         
-        .video-container video {
+        .phone-video-container {
+            border-radius: 2rem;
+            overflow: hidden;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
+            border: 8px solid var(--navy-dark-2);
             width: 100%;
-            height: auto;
+            max-width: 411px; /* Google Pixel 7 width */
+            position: relative;
+            aspect-ratio: 9/19.5; /* Google Pixel 7 aspect ratio */
+        }
+        
+        .video-container video, .phone-video-container video {
+            width: 100%;
+            height: 100%;
             display: block;
+            object-fit: cover;
         }
         
         /* Mobile-specific styles */
@@ -101,6 +113,12 @@
                 max-width: 100%;
                 border-radius: 1rem;
                 border-width: 3px;
+            }
+            
+            .phone-video-container {
+                max-width: 280px;
+                border-radius: 1.5rem;
+                border-width: 6px;
             }
             
             .main-content {
@@ -128,7 +146,7 @@
             z-index: 10;
         }
         
-        #home, #problem, #features, #design, #team, #results {
+        #home, #problem, #features {
             height: 100%;
             width: 100%;
         }
@@ -186,9 +204,6 @@
                 <a href="#home" class="nav-link active" onclick="showSection('home')">Home</a>
                 <a href="#problem" class="nav-link" onclick="showSection('problem')">Problem</a>
                 <a href="#features" class="nav-link" onclick="showSection('features')">Features</a>
-                <a href="#design" class="nav-link" onclick="showSection('design')">Design</a>
-                <a href="#team" class="nav-link" onclick="showSection('team')">Team</a>
-                <a href="#results" class="nav-link" onclick="showSection('results')">Results</a>
             </div>
         </div>
     </nav>
@@ -249,8 +264,12 @@
                     <p class="body-text opacity-80">In Qatar, 20% of men and 23% of women are classified as overweight or obese</p>
                 </div>
                 <div class="w-full md:w-1/2 flex justify-center mt-8 md:mt-0">
-                    <div class="phone-mockup">
-                        <img src="assets/images/app-problem.png" alt="FitMate Problem Visual" class="w-full">
+                    <!-- Added video container to problem section -->
+                    <div class="video-container">
+                        <video controls autoplay muted loop playsinline>
+                            <source src="assets/videos/problem.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
                     </div>
                 </div>
             </div>
@@ -295,118 +314,18 @@
                     </ul>
                 </div>
                 <div class="w-full md:w-1/2 flex justify-center mt-8 md:mt-0">
-                    <div class="grid grid-cols-2 gap-4">
-                        <div class="phone-mockup">
-                            <img src="assets/images/app-feature1.png" alt="Feature 1" class="w-full">
-                        </div>
-                        <div class="phone-mockup">
-                            <img src="assets/images/app-feature2.png" alt="Feature 2" class="w-full">
-                        </div>
+                    <!-- Replaced phone mockups with demo video styled as a phone -->
+                    <div class="phone-video-container">
+                        <video controls autoplay muted loop playsinline>
+                            <source src="assets/videos/demo.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
                     </div>
                 </div>
             </div>
         </section>
         
-        <!-- Design Section -->
-        <section id="design" class="content-section">
-            <div class="container mx-auto px-6 flex flex-col md:flex-row items-center">
-                <div class="w-full md:w-1/2 flex flex-col items-start">
-                    <h1 class="h1-style mb-4">UI Design</h1>
-                    <p class="body-text mb-4">Simple, intuitive interface designed for fitness beginners and intermediates.</p>
-                    <div class="grid grid-cols-2 gap-4 mb-6">
-                        <div class="bg-navy-dark-2 rounded-lg p-3 text-center">
-                            <div class="w-12 h-12 rounded-full mx-auto mb-2" style="background-color: var(--neon-green);"></div>
-                            <p class="text-sm">Neon Green</p>
-                            <p class="text-xs opacity-70">#C2EB50</p>
-                        </div>
-                        <div class="bg-navy-dark-2 rounded-lg p-3 text-center">
-                            <div class="w-12 h-12 rounded-full mx-auto mb-2" style="background-color: var(--neon-green-dark);"></div>
-                            <p class="text-sm">Neon Green Dark</p>
-                            <p class="text-xs opacity-70">#92CB37</p>
-                        </div>
-                    </div>
-                    <p class="body-text opacity-80">Dark mode interface with playful mascot elements to make fitness approachable</p>
-                </div>
-                <div class="w-full md:w-1/2 flex justify-center mt-8 md:mt-0">
-                    <div class="grid grid-cols-2 gap-4">
-                        <div class="phone-mockup">
-                            <img src="assets/images/app-design1.png" alt="UI Design 1" class="w-full">
-                        </div>
-                        <div class="phone-mockup">
-                            <img src="assets/images/app-design2.png" alt="UI Design 2" class="w-full">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <!-- Team Section -->
-        <section id="team" class="content-section">
-            <div class="container mx-auto px-6 flex flex-col md:flex-row items-center">
-                <div class="w-full md:w-1/2 flex flex-col items-start">
-                    <h1 class="h1-style mb-4">Our Team</h1>
-                    <p class="body-text mb-6">FitMate was developed by computer science students passionate about using AI to solve health problems.</p>
-                    <div class="grid grid-cols-2 gap-4">
-                        <div class="bg-navy-dark-2 rounded-lg p-4 text-center">
-                            <div class="w-16 h-16 rounded-full mx-auto mb-2 bg-gray-700"></div>
-                            <p class="body-text font-medium">Team Member 1</p>
-                            <p class="text-sm opacity-70">Developer</p>
-                        </div>
-                        <div class="bg-navy-dark-2 rounded-lg p-4 text-center">
-                            <div class="w-16 h-16 rounded-full mx-auto mb-2 bg-gray-700"></div>
-                            <p class="body-text font-medium">Team Member 2</p>
-                            <p class="text-sm opacity-70">UI/UX Designer</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="w-full md:w-1/2 flex justify-center mt-8 md:mt-0">
-                    <div class="phone-mockup">
-                        <img src="assets/images/team-photo.png" alt="Team Photo" class="w-full">
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <!-- Results Section -->
-        <section id="results" class="content-section">
-            <div class="container mx-auto px-6 flex flex-col md:flex-row items-center">
-                <div class="w-full md:w-1/2 flex flex-col items-start">
-                    <h1 class="h1-style mb-4">Project Results</h1>
-                    <ul class="space-y-4 mb-6">
-                        <li class="flex items-start">
-                            <svg class="h-6 w-6 mr-2 flex-shrink-0" style="color: var(--neon-green);" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
-                            </svg>
-                            <span class="body-text">95% user satisfaction rating</span>
-                        </li>
-                        <li class="flex items-start">
-                            <svg class="h-6 w-6 mr-2 flex-shrink-0" style="color: var(--neon-green);" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
-                            </svg>
-                            <span class="body-text">SDP Bronze Medal Winner</span>
-                        </li>
-                        <li class="flex items-start">
-                            <svg class="h-6 w-6 mr-2 flex-shrink-0" style="color: var(--neon-green);" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
-                            </svg>
-                            <span class="body-text">Successfully passed all performance tests</span>
-                        </li>
-                        <li class="flex items-start">
-                            <svg class="h-6 w-6 mr-2 flex-shrink-0" style="color: var(--neon-green);" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
-                            </svg>
-                            <span class="body-text">Average response time under 3 seconds</span>
-                        </li>
-                    </ul>
-                    <p class="body-text opacity-80">A comprehensive solution that successfully addresses user needs</p>
-                </div>
-                <div class="w-full md:w-1/2 flex justify-center mt-8 md:mt-0">
-                    <div class="phone-mockup">
-                        <img src="assets/images/app-results.png" alt="Results Visualization" class="w-full">
-                    </div>
-                </div>
-            </div>
-        </section>
+
     </main>
 
     <script>
